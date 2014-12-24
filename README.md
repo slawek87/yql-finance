@@ -1,13 +1,47 @@
-yql-finance
+What is yql-finance?
 ===========
 yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API.
     API returns fetched stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).
 
-You can fetch data one of two ways:
-        `yql = YQL('AAPL', '2011-01-01', '2014-12-31')`
-    or
-        `yql = YQL()`
-        `yql.select('AAPL', '2011-01-01', '2014-12-31')`
+How to use it?
+==============
+You can use it to fetch data one of two ways:
+
+```yql = YQL('AAPL', '2011-01-01', '2014-12-31')```
+```
+yql = YQL()
+yql.select('AAPL', '2011-01-01', '2014-12-31')
+```
 
 To get prices use `get_prices()` method. It returns list of stock closing prices for current period of time
 and current ticker.
+
+Examples
+===============
+
+1. First way:
+```
+    yql = YQL('AAPL', '2014-01-01', '2014-01-10')
+    
+    for item in yql.get_prices():
+        print item.get('date'), item.get('price')
+```
+2. Seond way:
+```
+    yql = YQL()
+    
+    yql.select('AAPL', '2014-01-01', '2014-01-10')
+    
+    for item in yql.get_prices():
+        print item.get('date'), item.get('price')
+```
+Output:
+```
+2014-01-10 532.94
+2014-01-09 536.52
+2014-01-08 543.46
+2014-01-07 540.04
+2014-01-06 543.93
+2014-01-03 540.98
+2014-01-02 553.13
+```
