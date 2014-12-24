@@ -9,7 +9,7 @@ class YQL(object):
     """yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API.
     API returns fetched stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).
 
-    You can fetch data one of two ways:
+    You can use it to fetch data one of two ways::
         - yql = YQL('AAPL', '2011-01-01', '2014-12-31')
         or
         - yql = YQL()
@@ -115,7 +115,7 @@ class YQL(object):
         prices = list()
 
         for data in self.data:
-            date = datetime.datetime.strptime(data['Date'], '%Y-%m-%d')
-            prices.append(dict(price=data['Close'], date=date))
+            date = datetime.datetime.strptime(data['Date'], '%Y-%m-%d').date()
+            prices.append(dict(price=data['Adj_Close'], date=date))
 
         return prices
