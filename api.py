@@ -63,20 +63,18 @@ class YQL(object):
 
         data = []
 
-        counter = ((relativedelta(self.end_date, self.start_date).years*12) / 6)+2
+        counter = ((relativedelta(self.end_date, self.start_date).years*12) / 6) + 1
+        months = 0
 
         for month in range(counter):
-            end_date = datetime.datetime.strptime(
-                "%s-%s-%s" % (self.start_date.year, self.end_date.month, self.end_date.day), '%Y-%m-%d')
 
-            if month:
-                months = month*6
+            chunk_start_date = self.start_date+relativedelta(months=months)
+            chunk_end_date = self.start_date+relativedelta(months=months+6)
 
-                chunk_start_date = self.start_date+relativedelta(months=months)
-                chunk_end_date = end_date+relativedelta(months=months+12)
-            else:
-                chunk_start_date = self.start_date
-                chunk_end_date = end_date+relativedelta(months=12)
+            months += 6
+
+            if chunk_end_date > self.end_date:
+                chunk_end_date = self.end_date
 
             data = data + self.get_data(chunk_start_date, chunk_end_date)
 
@@ -99,7 +97,7 @@ class YQL(object):
 
 
 if __name__ == '__main__':
-    yql = YQL('AAPL', '2014-02-20', '2014-03-15')
+    yql = YQL('AAPL', '2011-01-01', '2014-12-31')
     #yql.select('AAPL', '2014-02-20', '2014-03-15')
     for item in yql.get_prices():
         print item.get('date'), item.get('price')
