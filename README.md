@@ -26,7 +26,7 @@ yql = YQL('AAPL', '2014-01-01', '2014-01-10')
 for item in yql.get_prices():
     print item.get('date'), item.get('price')
 ```
-2. Seond way:
+2. Second way:
 ```
 yql = YQL()
 
