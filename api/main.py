@@ -25,11 +25,11 @@ class YQL(object):
     parameters = {
         'q': '',
         'format': 'json',
-        'diagnostics': 'true',
+        'diagnostics': 'false',
         'env': 'store://datatables.org/alltableswithkeys',
         'callback': ''
     }
-    api ='https://query.yahooapis.com/v1/public/yql'
+    api = 'https://query.yahooapis.com/v1/public/yql'
 
     data = []
 
@@ -51,7 +51,7 @@ class YQL(object):
     @staticmethod
     def get_date(date):
         """Method converts string date to datetime date. You should use %Y-%m-%d format."""
-        return datetime.datetime.strptime(date, '%Y-%m-%d')
+        return datetime.datetime.strptime(date, '%Y-%m-%d').date()
 
     def select(self, ticker, start_date, end_date):
         """Method returns stock prices for current: ticker, start date, end date."""
@@ -86,13 +86,13 @@ class YQL(object):
 
         data = []
 
-        counter = ((relativedelta(self.end_date, self.start_date).years*12) / 6) + 1
+        counter = (relativedelta(self.end_date, self.start_date).months / 6) + 1
         months = 0
 
         for month in range(counter):
 
-            chunk_start_date = self.start_date+relativedelta(months=months)
-            chunk_end_date = self.start_date+relativedelta(months=months+6)
+            chunk_start_date = self.start_date + relativedelta(months=months)
+            chunk_end_date = self.start_date + relativedelta(months=months + 6)
 
             months += 6
 
@@ -104,11 +104,16 @@ class YQL(object):
         return data
 
     def fetch_data(self, start_date, end_date):
-        """Method returns json results from response of Yahoo YQL API."""
+        """Method returns json results from response of Yahoo YQL API. It should returns always python list."""
         query = self.prepare_query(start_date, end_date)
-        response = self.send_request(query)
 
-        return response['query']['results']['quote']
+        response = self.send_request(query)
+        results = response['query']['results']['quote']
+
+        if not isinstance(results, list):
+            results = [results]
+
+        return results
 
     def get_prices(self):
         """Method returns list of stock closing prices (i.e. ['2015-01-02', '23.21'])."""
