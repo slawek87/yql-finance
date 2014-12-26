@@ -2,6 +2,7 @@ import requests
 
 
 class Request(object):
+    """Class is responsible for prepare request query and send reqest to YQL Yahoo API."""
     parameters = {
         'q': '',
         'format': 'json',
