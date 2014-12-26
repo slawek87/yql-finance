@@ -48,9 +48,6 @@ class YQL(object):
         - yql = YQL()
           yql.select('AAPL', '2011-01-01', '2014-12-31')
 
-    To get prices use `get_prices()` method. It returns list of stock closing prices for current period of time
-    and current ticker/symbol.
-
     Requirements:
         - requests
         - dateutil
@@ -58,7 +55,7 @@ class YQL(object):
     request = Request()
 
     def __repr__(self):
-        return '<YQL Object: symbol %s start_date %s end_date %s>' % (self.symbol, self.start_date, self.end_date)
+        return '<YQL Object: symbol %s start_date / %s end_date %s>' % (self.symbol, self.start_date, self.end_date)
 
     def __init__(self, symbol, start_data, end_data):
         """Method setups basic (self) variables."""
