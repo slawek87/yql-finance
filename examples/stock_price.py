@@ -1,4 +1,4 @@
-from api.main import YQL
+from yql.api import YQL
 
 
 def fetch_appl():

@@ -19,14 +19,18 @@ Examples
 ===============
 
 1. First way:
-```
+```python
+from yql.api import YQL
+
 yql = YQL('AAPL', '2014-01-01', '2014-01-10')
 
 for item in yql:
     print item.get('date'), item.get('price')
 ```
 2. Second way:
-```
+```python
+from yql.api import YQL
+
 yql = YQL()
 
 yql.select('AAPL', '2014-01-01', '2014-01-10')

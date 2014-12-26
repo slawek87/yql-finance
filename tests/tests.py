@@ -1,6 +1,5 @@
 import unittest
-
-from api.main import YQL
+from yql.api import YQL
 
 
 class YQLTest(unittest.TestCase):

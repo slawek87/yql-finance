@@ -1,8 +1,8 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 
-from api.request import Request
-from api import const
+from yql.request import Request
+from yql import const
 
 
 class YQL(object):
