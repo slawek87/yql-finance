@@ -7,7 +7,7 @@ yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python A
 
 How to use it?
 ==============
-You can use it to fetch data one of two ways:
+You can use it to fetch data in one of two ways:
 
 ```yql = YQL('AAPL', '2011-01-01', '2014-12-31')```
 ```
