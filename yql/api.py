@@ -7,7 +7,7 @@ from yql import const
 
 class YQL(object):
     """yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API.
-    API returns fetched stock closing prices for current period of time and current stock ticker/symbol (i.e. APPL, GOOGL).
+    API returns stock closing prices for current period of time and current stock ticker/symbol (i.e. APPL, GOOGL).
 
     You can use it to fetch data in one of two ways::
         - yql = YQL('AAPL', '2011-01-01', '2014-12-31')
