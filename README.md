@@ -1,3 +1,5 @@
+![Alt text](https://travis-ci.org/slawek87/yql-finance.svg?branch=master)  
+
 What is yql-finance?
 ===========
 yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API.
