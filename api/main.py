@@ -35,7 +35,18 @@ class Request(object):
         if not isinstance(results, list):
             results = [results]
 
-        return results
+        return self.clean(results)
+
+    def clean(self, data):
+        """Method returns cleaned list of stock closing prices
+        (i.e. dict(date=datetime.date(2015, 1, 2), price='23.21'))."""
+        cleaned_data = list()
+
+        for item in data:
+            date = datetime.datetime.strptime(item['Date'], '%Y-%m-%d').date()
+            cleaned_data.append(dict(price=item['Adj_Close'], date=date))
+
+        return cleaned_data
 
 
 class YQL(object):
@@ -93,9 +104,7 @@ class YQL(object):
         else:
             data = self.fetch_chunk_data()
 
-        cdata = self.clean(data)
-
-        return cdata
+        return data
 
     def fetch_chunk_data(self):
         """If period of time between start end end is bigger then one year
@@ -119,13 +128,3 @@ class YQL(object):
 
         return data
 
-    def clean(self, data):
-        """Method returns cleaned list of stock closing prices
-        (i.e. dict(date=datetime.date(2015, 1, 2), price='23.21'))."""
-        cleaned_data = list()
-
-        for item in data:
-            date = datetime.datetime.strptime(item['Date'], '%Y-%m-%d').date()
-            cleaned_data.append(dict(price=item['Adj_Close'], date=date))
-
-        return cleaned_data
