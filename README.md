@@ -4,6 +4,7 @@ What is yql-finance?
 ===========
 yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API.
     API returns stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).
+    Stock prices: NASDAQ, SP&500, DAX etc.
 
 How to use it?
 ==============
