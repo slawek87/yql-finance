@@ -13,9 +13,6 @@ yql = YQL()
 yql.select('AAPL', '2011-01-01', '2014-12-31')
 ```
 
-To get prices use `get_prices()` method. It returns list of stock closing prices for current period of time
-and current ticker.
-
 Examples
 ===============
 
@@ -23,7 +20,7 @@ Examples
 ```
 yql = YQL('AAPL', '2014-01-01', '2014-01-10')
 
-for item in yql.get_prices():
+for item in yql:
     print item.get('date'), item.get('price')
 ```
 2. Second way:
@@ -32,7 +29,7 @@ yql = YQL()
 
 yql.select('AAPL', '2014-01-01', '2014-01-10')
 
-for item in yql.get_prices():
+for item in yql:
     print item.get('date'), item.get('price')
 ```
 Output:

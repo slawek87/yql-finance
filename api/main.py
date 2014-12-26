@@ -5,23 +5,7 @@ import requests
 ONE_YEAR = 1
 
 
-class YQL(object):
-    """yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API.
-    API returns fetched stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).
-
-    You can use it to fetch data one of two ways::
-        - yql = YQL('AAPL', '2011-01-01', '2014-12-31')
-        or
-        - yql = YQL()
-          yql.select('AAPL', '2011-01-01', '2014-12-31')
-
-    To get prices use `get_prices()` method. It returns list of stock closing prices for current period of time
-    and current ticker.
-
-    Requirements:
-        - requests
-        - dateutil
-    """
+class Request(object):
     parameters = {
         'q': '',
         'format': 'json',
@@ -31,59 +15,94 @@ class YQL(object):
     }
     api = 'https://query.yahooapis.com/v1/public/yql'
 
-    data = []
-
-    start_date = None
-    end_date = None
-
-    ticker = None
-
-    def __init__(self, ticker=None, start_date=None, end_date=None):
-        if start_date and end_date and ticker:
-            self.select(ticker, start_date, end_date)
-
-    def setup(self, ticker, start_data, end_data):
-        """Method setups basic (self) variables."""
-        self.start_date = self.get_date(start_data)
-        self.end_date = self.get_date(end_data)
-        self.ticker = ticker
-
-    @staticmethod
-    def get_date(date):
-        """Method converts string date to datetime date. You should use %Y-%m-%d format."""
-        return datetime.datetime.strptime(date, '%Y-%m-%d').date()
-
-    def select(self, ticker, start_date, end_date):
-        """Method returns stock prices for current: ticker, start date, end date."""
-        self.setup(ticker, start_date, end_date)
-
-        data = self.fetch_chunks_data()
-
-        self.data = data
-
-        return self.data
-
-    def prepare_query(self, start_date, end_date):
+    def prepare_query(self, symbol,  start_date, end_date):
         """Method returns prepared request query for Yahoo YQL API."""
         query = \
             'select * from yahoo.finance.historicaldata where symbol = "%s" and startDate = "%s" and endDate = "%s"' \
-            % (self.ticker, start_date, end_date)
+            % (symbol, start_date, end_date)
 
         return query
 
-    def send_request(self, query):
+    def send(self, symbol, start_date, end_date):
         """Method sends request to Yahoo YQL API."""
+        query = self.prepare_query(symbol, start_date, end_date)
+
         self.parameters['q'] = query
-        data = requests.get(self.api, params=self.parameters)
+        response = requests.get(self.api, params=self.parameters).json()
 
-        return data.json()
+        results = response['query']['results']['quote']
 
-    def fetch_chunks_data(self):
+        if not isinstance(results, list):
+            results = [results]
+
+        return results
+
+
+class YQL(object):
+    """yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API.
+    API returns fetched stock closing prices for current period of time and current stock ticker/symbol (i.e. APPL, GOOGL).
+
+    You can use it to fetch data one of two ways::
+        - yql = YQL('AAPL', '2011-01-01', '2014-12-31')
+        or
+        - yql = YQL()
+          yql.select('AAPL', '2011-01-01', '2014-12-31')
+
+    To get prices use `get_prices()` method. It returns list of stock closing prices for current period of time
+    and current ticker/symbol.
+
+    Requirements:
+        - requests
+        - dateutil
+    """
+    request = Request()
+
+    def __repr__(self):
+        return '<YQL Object: symbol %s start_date %s end_date %s>' % (self.symbol, self.start_date, self.end_date)
+
+    def __init__(self, symbol, start_data, end_data):
+        """Method setups basic (self) variables."""
+        self.start_date = self.to_date(start_data)
+        self.end_date = self.to_date(end_data)
+        self.symbol = symbol
+
+        self.data = self.fetch_data()
+
+    def __getitem__(self, index):
+        return self.data[index]
+
+    def __setitem__(self, index, value):
+        self.data[index] = value
+
+    def __delitem__(self, index):
+        del self.data[index]
+
+    @staticmethod
+    def to_date(date):
+        """Method converts string date to datetime date. You should use %Y-%m-%d format."""
+        return datetime.datetime.strptime(date, '%Y-%m-%d').date()
+
+    @classmethod
+    def select(cls, symbol, start_date, end_date):
+        """Method returns stock prices for current: ticker/symbol, start date, end date."""
+        instance = cls(symbol, start_date, end_date)
+
+        return instance.data
+
+    def fetch_data(self):
+        """Method returns results from response of Yahoo YQL API. It should returns always python list."""
+        if relativedelta(self.end_date, self.start_date).years <= ONE_YEAR:
+            data = self.request.send(self.symbol, self.start_date, self.end_date)
+        else:
+            data = self.fetch_chunk_data()
+
+        cdata = self.clean(data)
+
+        return cdata
+
+    def fetch_chunk_data(self):
         """If period of time between start end end is bigger then one year
         We have to create and fetch chunks dates (6 months chunks)."""
-        if relativedelta(self.end_date, self.start_date).years <= ONE_YEAR:
-            return self.fetch_data(self.start_date, self.end_date)
-
         data = []
 
         counter = (relativedelta(self.end_date, self.start_date).months / 6) + 1
@@ -99,28 +118,17 @@ class YQL(object):
             if chunk_end_date > self.end_date:
                 chunk_end_date = self.end_date
 
-            data = data + self.fetch_data(chunk_start_date, chunk_end_date)
+            data = data + self.request.send(self.symbol, chunk_start_date, chunk_end_date)
 
         return data
 
-    def fetch_data(self, start_date, end_date):
-        """Method returns json results from response of Yahoo YQL API. It should returns always python list."""
-        query = self.prepare_query(start_date, end_date)
+    def clean(self, data):
+        """Method returns cleaned list of stock closing prices
+        (i.e. dict(date=datetime.date(2015, 1, 2), price='23.21'))."""
+        cleaned_data = list()
 
-        response = self.send_request(query)
-        results = response['query']['results']['quote']
+        for item in data:
+            date = datetime.datetime.strptime(item['Date'], '%Y-%m-%d').date()
+            cleaned_data.append(dict(price=item['Adj_Close'], date=date))
 
-        if not isinstance(results, list):
-            results = [results]
-
-        return results
-
-    def get_prices(self):
-        """Method returns list of stock closing prices (i.e. ['2015-01-02', '23.21'])."""
-        prices = list()
-
-        for data in self.data:
-            date = datetime.datetime.strptime(data['Date'], '%Y-%m-%d').date()
-            prices.append(dict(price=data['Adj_Close'], date=date))
-
-        return prices
+        return cleaned_data
