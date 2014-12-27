@@ -1,6 +1,6 @@
-<div style="text-align:right" markdown="1">
+
     ![Alt text](https://github.com/iknowledge-io/team/blob/master/images/iknowledge.png)
-</div>
+
 
 What is yql-finance?
 ===========
