@@ -1,5 +1,4 @@
-
-    ![Alt text](https://github.com/iknowledge-io/team/blob/master/images/iknowledge.png)
+![Alt text](https://github.com/iknowledge-io/team/blob/master/images/iknowledge.png)
 
 
 What is yql-finance?
