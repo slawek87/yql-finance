@@ -24,5 +24,5 @@ setup(
                 'stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).',
     long_description=readme,
     keywords=['Python Yahoo YQL API', 'NASDAQ', 'S&P500', 'DAX', 'Python Stock prices'],
-    install_requires=['setuptools', 'requests' 'python-dateutil'],
+    install_requires=['setuptools', 'requests', 'python-dateutil'],
 )
