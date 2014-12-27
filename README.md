@@ -10,8 +10,10 @@ How to use it?
 ==============
 You can use it to fetch data in one of two ways:
 
-```yql = YQL('AAPL', '2011-01-01', '2014-12-31')```
+```python
+yql = YQL('AAPL', '2011-01-01', '2014-12-31')
 ```
+```python
 yql = YQL()
 yql.select('AAPL', '2011-01-01', '2014-12-31')
 ```
