@@ -56,3 +56,5 @@ Output:
 2014-01-03 75.69
 2014-01-02 77.39
 ```
+
+More examples you should find [here](https://github.com/slawek87/yql-finance/blob/master/examples/stock_price.py).
