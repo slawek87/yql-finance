@@ -21,7 +21,7 @@ yql.select('AAPL', '2011-01-01', '2014-12-31')
 
 How to install it?
 ===================
-    ```pip install yql-finance```
+    pip install yql-finance
 
 Examples
 ===============
