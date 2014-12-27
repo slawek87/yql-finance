@@ -1,4 +1,5 @@
 ![Alt text](https://travis-ci.org/slawek87/yql-finance.svg?branch=master)  
+[![PyPI version](https://badge.fury.io/py/yql-finance.svg)](http://badge.fury.io/py/yql-finance)
 
 What is yql-finance?
 ===========
