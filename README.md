@@ -61,5 +61,4 @@ Output:
 ![Alt text](https://github.com/iknowledge-io/team/blob/master/images/iknowledge.png)
 
 <br/>
-
 More examples you should find [here](https://github.com/slawek87/yql-finance/blob/master/examples/stock_price.py).
