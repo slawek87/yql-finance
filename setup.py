@@ -23,6 +23,6 @@ setup(
     description='yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API. API returns'
                 'stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).',
     long_description=readme,
-    keywords=['Yahoo YQL API', 'NASDAQ', 'S&P500', 'DAX', 'Stock prices'],
+    keywords=['Python Yahoo YQL API', 'NASDAQ', 'S&P500', 'DAX', 'Python Stock prices'],
     install_requires=['setuptools', 'requests' 'python-dateutil'],
 )
