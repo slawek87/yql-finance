@@ -1,6 +1,6 @@
 ![Alt text](https://github.com/iknowledge-io/team/blob/master/images/iknowledge.png)
 
-<div class="right-center">Centered text</div>
+<div class="align-center">Centered text</div>
 
 What is yql-finance?
 ===========
