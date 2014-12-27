@@ -1,6 +1,3 @@
-![Alt text](https://github.com/iknowledge-io/team/blob/master/images/iknowledge.png)
-
-
 What is yql-finance?
 ===========
 ![Alt text](https://travis-ci.org/slawek87/yql-finance.svg?branch=master)&nbsp;&nbsp;&nbsp;[![PyPI version](https://badge.fury.io/py/yql-finance.svg)](http://badge.fury.io/py/yql-finance)
@@ -60,4 +57,7 @@ Output:
 2014-01-02 77.39
 ```
 
+<br/>
+![Alt text](https://github.com/iknowledge-io/team/blob/master/images/iknowledge.png)
+<br/>
 More examples you should find [here](https://github.com/slawek87/yql-finance/blob/master/examples/stock_price.py).
