@@ -13,6 +13,7 @@ You can use it to fetch data in one of two ways:
 ```python
 yql = YQL('AAPL', '2011-01-01', '2014-12-31')
 ```
+or
 ```python
 yql = YQL()
 yql.select('AAPL', '2011-01-01', '2014-12-31')
