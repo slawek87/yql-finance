@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Yql-finance by iknowledge-io</title>
@@ -11,96 +11,152 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+</head>
+<body>
+<div class="wrapper">
+    <header>
         <h1>Yql-finance</h1>
-        <p>yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API. API returns stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL). Stock prices: NASDAQ, SP&amp;500, DAX etc.</p>
 
-        <p class="view"><a href="https://github.com/iknowledge-io/yql-finance">View the Project on GitHub <small>iknowledge-io/yql-finance</small></a></p>
+        <p>yql-finance is simple and fast https://developer.yahoo.com/yql/console/ python API. API returns stock closing
+            prices for current period of time and current stock ticker (i.e. APPL, GOOGL). Stock prices: NASDAQ, SP&amp;500,
+            DAX etc.</p>
+
+        <p class="view"><a href="https://github.com/iknowledge-io/yql-finance">View the Project on GitHub
+            <small>iknowledge-io/yql-finance</small>
+        </a></p>
 
 
         <ul>
-          <li><a href="https://github.com/iknowledge-io/yql-finance/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/iknowledge-io/yql-finance/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/iknowledge-io/yql-finance">View On <strong>GitHub</strong></a></li>
+            <li><a href="https://github.com/iknowledge-io/yql-finance/zipball/master">Download <strong>ZIP File</strong></a>
+            </li>
+            <li><a href="https://github.com/iknowledge-io/yql-finance/tarball/master">Download <strong>TAR Ball</strong></a>
+            </li>
+            <li><a href="https://github.com/iknowledge-io/yql-finance">View On <strong>GitHub</strong></a></li>
         </ul>
-      </header>
-      <section>
+    </header>
+    <section>
         <h1>
-<a id="what-is-yql-finance" class="anchor" href="#what-is-yql-finance" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is yql-finance?</h1>
+            <a id="what-is-yql-finance" class="anchor" href="#what-is-yql-finance" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>What is yql-finance?</h1>
 
-<p><img src="https://travis-ci.org/iknowledge-io/yql-finance.svg?branch=master" alt="Alt text">   <a href="http://badge.fury.io/py/yql-finance"><img src="https://badge.fury.io/py/yql-finance.svg" alt="PyPI version"></a></p>
+        <p><img src="https://travis-ci.org/iknowledge-io/yql-finance.svg?branch=master" alt="Alt text">   <a
+                href="http://badge.fury.io/py/yql-finance"><img src="https://badge.fury.io/py/yql-finance.svg"
+                                                                alt="PyPI version"></a></p>
 
-<p>yql-finance is simple and fast <a href="https://developer.yahoo.com/yql/console/">https://developer.yahoo.com/yql/console/</a> python API.
-    API returns stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).
-    Stock prices: NASDAQ, SP&amp;500, DAX etc.</p>
+        <p>yql-finance is simple and fast <a href="https://developer.yahoo.com/yql/console/">https://developer.yahoo.com/yql/console/</a>
+            python API.
+            API returns stock closing prices for current period of time and current stock ticker (i.e. APPL, GOOGL).
+            Stock prices: NASDAQ, SP&amp;500, DAX etc.</p>
 
-<h1>
-<a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use it?</h1>
+        <h1>
+            <a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>How to use it?</h1>
 
-<p>You can use it to fetch data in one of two ways:</p>
+        <p>You can use it to fetch data in one of two ways:</p>
 
-<div class="highlight highlight-python"><pre>yql <span class="pl-k">=</span> YQL(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2011-01-01<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-12-31<span class="pl-pds">'</span></span>)</pre></div>
+        <div class="highlight highlight-python">
+            <pre>yql <span class="pl-k">=</span> YQL(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span
+                    class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2011-01-01<span
+                    class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-12-31<span
+                    class="pl-pds">'</span></span>)</pre>
+        </div>
 
-<p>or</p>
+        <p>or</p>
 
-<div class="highlight highlight-python"><pre>yql <span class="pl-k">=</span> YQL()
-yql.select(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2011-01-01<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-12-31<span class="pl-pds">'</span></span>)</pre></div>
+        <div class="highlight highlight-python"><pre>yql <span class="pl-k">=</span> YQL()
+yql.select(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span class="pl-pds">'</span></span>, <span
+                    class="pl-s1"><span class="pl-pds">'</span>2011-01-01<span class="pl-pds">'</span></span>, <span
+                    class="pl-s1"><span class="pl-pds">'</span>2014-12-31<span class="pl-pds">'</span></span>)</pre>
+        </div>
 
-<h1>
-<a id="how-to-install-it" class="anchor" href="#how-to-install-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to install it?</h1>
+        <h1>
+            <a id="how-to-install-it" class="anchor" href="#how-to-install-it" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>How to install it?</h1>
 
 <pre><code>pip install yql-finance
 </code></pre>
 
-<h1>
-<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h1>
+        <h1>
+            <a id="examples" class="anchor" href="#examples" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Examples</h1>
 
-<ol>
-<li>First way:</li>
-</ol>
+        <ol>
+            <li>First way:</li>
+        </ol>
 
-<div class="highlight highlight-python"><pre><span class="pl-k">from</span> yql.api <span class="pl-k">import</span> YQL
+        <div class="highlight highlight-python"><pre><span class="pl-k">from</span> yql.api <span
+                class="pl-k">import</span> YQL
 
-yql <span class="pl-k">=</span> YQL(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-01-01<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-01-10<span class="pl-pds">'</span></span>)
+yql <span class="pl-k">=</span> YQL(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span
+                    class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-01-01<span
+                    class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-01-10<span
+                    class="pl-pds">'</span></span>)
 
 <span class="pl-k">for</span> item <span class="pl-k">in</span> yql:
-    <span class="pl-k">print</span> item.get(<span class="pl-s1"><span class="pl-pds">'</span>date<span class="pl-pds">'</span></span>), item.get(<span class="pl-s1"><span class="pl-pds">'</span>price<span class="pl-pds">'</span></span>)</pre></div>
+    <span class="pl-k">print</span> item.get(<span class="pl-s1"><span class="pl-pds">'</span>date<span
+                    class="pl-pds">'</span></span>), item.get(<span class="pl-s1"><span
+                    class="pl-pds">'</span>price<span class="pl-pds">'</span></span>)</pre>
+        </div>
 
-<ol>
-<li>Second way:</li>
-</ol>
+        <ol>
+            <li>Second way:</li>
+        </ol>
 
-<div class="highlight highlight-python"><pre><span class="pl-k">from</span> yql.api <span class="pl-k">import</span> YQL
+        <div class="highlight highlight-python"><pre><span class="pl-k">from</span> yql.api <span
+                class="pl-k">import</span> YQL
 
 yql <span class="pl-k">=</span> YQL()
 
-yql.select(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-01-01<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2014-01-10<span class="pl-pds">'</span></span>)
+yql.select(<span class="pl-s1"><span class="pl-pds">'</span>AAPL<span class="pl-pds">'</span></span>, <span
+                    class="pl-s1"><span class="pl-pds">'</span>2014-01-01<span class="pl-pds">'</span></span>, <span
+                    class="pl-s1"><span class="pl-pds">'</span>2014-01-10<span class="pl-pds">'</span></span>)
 
 <span class="pl-k">for</span> item <span class="pl-k">in</span> yql:
-    <span class="pl-k">print</span> item.get(<span class="pl-s1"><span class="pl-pds">'</span>date<span class="pl-pds">'</span></span>), item.get(<span class="pl-s1"><span class="pl-pds">'</span>price<span class="pl-pds">'</span></span>)</pre></div>
+    <span class="pl-k">print</span> item.get(<span class="pl-s1"><span class="pl-pds">'</span>date<span
+                    class="pl-pds">'</span></span>), item.get(<span class="pl-s1"><span
+                    class="pl-pds">'</span>price<span class="pl-pds">'</span></span>)</pre>
+        </div>
 
-<p>Output:</p>
+        <p>Output:</p>
 
 <pre><code>2014-01-10 74.57
-2014-01-09 75.07
-2014-01-08 76.04
-2014-01-07 75.56
-2014-01-06 76.10
-2014-01-03 75.69
-2014-01-02 77.39
+    2014-01-09 75.07
+    2014-01-08 76.04
+    2014-01-07 75.56
+    2014-01-06 76.10
+    2014-01-03 75.69
+    2014-01-02 77.39
 </code></pre>
 
-<p>More examples you should find <a href="https://github.com/iknowledge-io/yql-finance/tree/master/examples/">here</a>.</p>
-      </section>
-      <footer>
+        <p>More examples you should find <a href="https://github.com/iknowledge-io/yql-finance/tree/master/examples/">here</a>.
+        </p>
+    </section>
+    <footer>
         <p><a href="https://github.com/iknowledge-io"><img src="images/iknowledge.png" alt=""></a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>
+            </small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-58056724-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
 </html>
